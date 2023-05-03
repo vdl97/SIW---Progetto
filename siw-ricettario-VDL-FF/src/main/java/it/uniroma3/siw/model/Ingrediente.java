@@ -13,6 +13,7 @@ public class Ingrediente {
     private Long id;
 	
 	private String name;
+	private String descriptionProduct;
 	private Integer calories;
 	private String fonte;
 	
@@ -22,6 +23,14 @@ public class Ingrediente {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public String getDescriptionProduct() {
+		return this.descriptionProduct;
+	}
+	public void setDescriptionProduct(String descriptionProduct) {
+		this.descriptionProduct= descriptionProduct;
+	}
+	
 	public Integer getCalories() {
 		return calories;
 	}
@@ -34,9 +43,10 @@ public class Ingrediente {
 	public void setFonte(String fonte) {
 		this.fonte = fonte;
 	}
+	
 	@Override
 	public int hashCode() {
-		return Objects.hash(calories, fonte, name);
+		return Objects.hash(calories, descriptionProduct, fonte, id, name);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -47,7 +57,8 @@ public class Ingrediente {
 		if (getClass() != obj.getClass())
 			return false;
 		Ingrediente other = (Ingrediente) obj;
-		return Objects.equals(calories, other.calories) && Objects.equals(fonte, other.fonte)
+		return Objects.equals(calories, other.calories) && Objects.equals(descriptionProduct, other.descriptionProduct)
+				&& Objects.equals(fonte, other.fonte) && Objects.equals(id, other.id)
 				&& Objects.equals(name, other.name);
 	}
 }
