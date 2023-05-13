@@ -7,6 +7,9 @@ package it.uniroma3.siw.model;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
+
+import jakarta.persistence.ManyToMany;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,14 +26,14 @@ public class Ricetta {
 	@Column(nullable=false)
 	private String title;
 	@Column(nullable=false)
-	private Date time;
+	private int preparationTime;
 	private Integer dosesPerPerson;
 	@Column(columnDefinition="TEXT")
 	private String descriptionRicetta;
 	
-	//GESTIONE ONE TO MANY/MANY TO ONE
-	private List<Ingrediente> listaIngredienti;
-	
+//	@ManyToMany
+//	private Set<Ingrediente> listaIngredienti;
+//	
 	public Long getId() {
 		return id;
 	}
@@ -43,23 +46,17 @@ public class Ricetta {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Date getTime() {
-		return time;
+	public int getpreparationTime() {
+		return preparationTime;
 	}
-	public void setTime(Date time) {
-		this.time = time;
+	public void setpreparationTime(int preparationTime) {
+		this.preparationTime = preparationTime;
 	}
 	public int getDosesPerPerson() {
 		return dosesPerPerson;
 	}
 	public void setDosesPerPerson(int dosesPerPerson) {
 		this.dosesPerPerson = dosesPerPerson;
-	}
-	public List<Ingrediente> getListaIngredienti() {
-		return listaIngredienti;
-	}
-	public void setListaIngredienti(List<Ingrediente> listaIngredienti) {
-		this.listaIngredienti = listaIngredienti;
 	}
 	public String getDescriptionRicetta() {
 		return descriptionRicetta;
@@ -82,4 +79,10 @@ public class Ricetta {
 		Ricetta other = (Ricetta) obj;
 		return Objects.equals(id, other.id) && Objects.equals(title, other.title);
 	}
+//	public Set<Ingrediente> getListaIngredienti() {
+//		return listaIngredienti;
+//	}
+//	public void setListaIngredienti(Set<Ingrediente> listaIngredienti) {
+//		this.listaIngredienti = listaIngredienti;
+//	}
 }
