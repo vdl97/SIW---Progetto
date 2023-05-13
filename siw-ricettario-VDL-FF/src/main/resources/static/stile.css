@@ -3,6 +3,17 @@ body {
     color:dimgrey;
 }
 
+header {
+	background-color: crimson;
+	font-family: "Geneva";
+	height: 1.5em;
+  margin-bottom: 0.5em;
+  padding: 0.2em;
+  text-align: right;
+  font-size: 0.7em;
+	
+}
+
 a { 
 	text-decoration: none; 
     color: darkgrey;

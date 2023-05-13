@@ -10,7 +10,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import jakarta.persistence.ManyToMany;
-
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,17 +23,20 @@ public class Ricetta {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
+	
 	@Column(nullable=false)
 	private String title;
 	@Column(nullable=false)
 	private int preparationTime;
 	private Integer dosesPerPerson;
-	@Column(columnDefinition="TEXT")
+	@Column(columnDefinition="TEXT",nullable=false)
 	private String descriptionRicetta;
+	@ManyToOne
+	private User author;
+	@ManyToMany
+	private Set<Ingrediente> listaIngredienti;
+	private String portata;
 	
-//	@ManyToMany
-//	private Set<Ingrediente> listaIngredienti;
-//	
 	public Long getId() {
 		return id;
 	}
@@ -64,9 +67,17 @@ public class Ricetta {
 	public void setDescriptionRicetta(String descriptionRicetta) {
 		this.descriptionRicetta = descriptionRicetta;
 	}
+
+	public Set<Ingrediente> getListaIngredienti() {
+	return listaIngredienti;
+	}
+	public void setListaIngredienti(Set<Ingrediente> listaIngredienti) {
+		this.listaIngredienti = listaIngredienti;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, title);
+		return Objects.hash( descriptionRicetta, dosesPerPerson, preparationTime, title);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -77,12 +88,14 @@ public class Ricetta {
 		if (getClass() != obj.getClass())
 			return false;
 		Ricetta other = (Ricetta) obj;
-		return Objects.equals(id, other.id) && Objects.equals(title, other.title);
+		return Objects.equals(descriptionRicetta, other.descriptionRicetta)
+				&& Objects.equals(dosesPerPerson, other.dosesPerPerson) && preparationTime == other.preparationTime
+				&& Objects.equals(title, other.title);
 	}
-//	public Set<Ingrediente> getListaIngredienti() {
-//		return listaIngredienti;
-//	}
-//	public void setListaIngredienti(Set<Ingrediente> listaIngredienti) {
-//		this.listaIngredienti = listaIngredienti;
-//	}
+	public String getPortata() {
+		return portata;
+	}
+	public void setPortata(String portata) {
+		this.portata = portata;
+	}
 }
