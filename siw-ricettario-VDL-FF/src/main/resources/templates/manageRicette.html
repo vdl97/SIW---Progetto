@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		Ricette
+	</title>
+	<link rel="stylesheet" href="/stile.css?version=2" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<header>
+	
+</header>
+<body>
+	<div><img src="/siw-logo.jpg" width="10%"  /></div>
+	<h1>Elenco delle ricette inserite</h1>
+	<div th:if="${ricette.isEmpty()}">Non ci sono ricette nel sistema</div>
+	<ul>
+		<li th:each="ricetta : ${ricette}">
+			<span th:text="${ricetta.nome} + ' (' + ${ricetta.author.username} + ')'">Carbonara (Totti2001)</span>
+		</li>
+	</ul>
+	<a href="/formNewRicetta">Aggiungi una ricetta</a>
+</body>
+
+</html>

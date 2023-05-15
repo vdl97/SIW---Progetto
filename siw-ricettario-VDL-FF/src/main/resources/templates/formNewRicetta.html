@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		New Ricetta
+	</title>
+	<link rel="stylesheet" href="/stile.css?version=2" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<header>
+
+	</header>
+	<h1>Aggiungi la tua ricetta</h1>
+	<form th:action="@{/ricetta}" method="POST" th:object="${ricetta}">
+		<div th:if="${#fields.hasGlobalErrors()}">
+  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
+  		</div>
+		<div>
+			<label>Titolo:</label> 
+			<span><input type="text" th:field="${ricetta.title}" /></span>
+		    <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
+		    </span>
+		</div>
+		<div>
+			<label>Descrizione:</label> 
+			<span><input type="text" th:field="${ricetta.descriptionRicetta}" /></span>
+		    <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
+		    </span>
+		</div>
+		<div>
+			<span><button type="submit">Conferma</button></span>
+		</div>
+	</form>
+</body>
+
+</html>

@@ -16,9 +16,8 @@ public class Ingrediente {
     private Long id;
 	@Column(columnDefinition="TEXT",nullable=false)
 	private String name;
-	private String descriptionProduct;
+	private String category;
 	private Integer calories;
-	private String fonte;
 	
 	public String getName() {
 		return name;
@@ -28,10 +27,10 @@ public class Ingrediente {
 	}
 	
 	public String getDescriptionProduct() {
-		return this.descriptionProduct;
+		return this.category;
 	}
 	public void setDescriptionProduct(String descriptionProduct) {
-		this.descriptionProduct= descriptionProduct;
+		this.category= descriptionProduct;
 	}
 	
 	public Integer getCalories() {
@@ -40,16 +39,11 @@ public class Ingrediente {
 	public void setCalories(Integer calories) {
 		this.calories = calories;
 	}
-	public String getFonte() {
-		return fonte;
-	}
-	public void setFonte(String fonte) {
-		this.fonte = fonte;
-	}
+
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(calories, descriptionProduct, fonte, id, name);
+		return Objects.hash(calories, category, id, name);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -60,8 +54,7 @@ public class Ingrediente {
 		if (getClass() != obj.getClass())
 			return false;
 		Ingrediente other = (Ingrediente) obj;
-		return Objects.equals(calories, other.calories) && Objects.equals(descriptionProduct, other.descriptionProduct)
-				&& Objects.equals(fonte, other.fonte) && Objects.equals(id, other.id)
-				&& Objects.equals(name, other.name);
+		return Objects.equals(calories, other.calories) && Objects.equals(category, other.category)
+				&& Objects.equals(id, other.id) && Objects.equals(name, other.name);
 	}
 }

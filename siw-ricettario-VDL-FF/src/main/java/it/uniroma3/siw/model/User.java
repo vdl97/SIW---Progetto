@@ -19,8 +19,7 @@ public class User {
 	private String name;
 	private String surname;
 	private String email;
-	@OneToMany(mappedBy="author")
-	private List<Ricetta> ricette;
+	
 
     public Long getId() {
 		return id;
