@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.data.repository.CrudRepository;
 
 import it.uniroma3.siw.model.Ricetta;
-import it.uniroma3.siw.model.User;
+import it.uniroma3.siw.model.Utente;
 
 public interface RicettaRepository extends CrudRepository<Ricetta,Long>{
 	

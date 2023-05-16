@@ -32,7 +32,7 @@ public class Ricetta {
 	@Column(columnDefinition="TEXT",nullable=false)
 	private String descriptionRicetta;
 	@ManyToOne
-	private Credentials author;
+	private Credenziali author;
 	@ManyToMany
 	private Set<Ingrediente> listaIngredienti;
 	private String portata;
@@ -98,10 +98,10 @@ public class Ricetta {
 	public void setPortata(String portata) {
 		this.portata = portata;
 	}
-	public Credentials getAuthor() {
+	public Credenziali getAuthor() {
 		return author;
 	}
-	public void setAuthor(Credentials author) {
+	public void setAuthor(Credenziali author) {
 		this.author = author;
 	}
 }
