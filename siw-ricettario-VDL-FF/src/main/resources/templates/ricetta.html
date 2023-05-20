@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		 <title>Ricetta</title>
+	</head>
+	<body>
+		 <h1>Dettagli Ricetta</h1>
+    <div th:if="${ricetta}">
+        <span th:text="${ricetta.title}">Carbonara</span>
+        <span th:text="'(' + ${ricetta.preparationTime} + ')'">(20minuti)</span>
+    </div>
+    <div th:unless="${ricetta}">Non esiste</div>
+	</body>
+</html>
