@@ -6,12 +6,17 @@ package it.uniroma3.siw.model;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapKeyJoinColumn;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -33,8 +38,15 @@ public class Ricetta {
 	private String descriptionRicetta;
 	@ManyToOne
 	private Credentials author;
-	@ManyToMany
-	private Set<Ingrediente> listaIngredienti;
+//	
+//	@ManyToMany
+//	@ElementCollection
+//    @CollectionTable(name = "ricetta_ingrediente",
+//        joinColumns = @JoinColumn(name = "ricetta_id"))
+//    @MapKeyJoinColumn(name = "ingrediente_id")
+//    @Column(name = "nome_ingrediente")
+//	private Map<Ingrediente,String> listaIngredienti;
+	
 	private String portata;
 	
 	public Long getId() {
@@ -68,13 +80,14 @@ public class Ricetta {
 		this.descriptionRicetta = descriptionRicetta;
 	}
 
-	public Set<Ingrediente> getListaIngredienti() {
-	return listaIngredienti;
-	}
-	public void setListaIngredienti(Set<Ingrediente> listaIngredienti) {
-		this.listaIngredienti = listaIngredienti;
-	}
+	
 
+//	public Map<Ingrediente, String> getListaIngredienti() {
+//		return listaIngredienti;
+//	}
+//	public void setListaIngredienti(Map<Ingrediente, String> listaIngredienti) {
+//		this.listaIngredienti = listaIngredienti;
+//	}
 	@Override
 	public int hashCode() {
 		return Objects.hash( descriptionRicetta, dosesPerPerson, preparationTime, title);
