@@ -9,8 +9,9 @@ public class HomeController {
 	@Autowired 
 	private RicettaRepository ricettaRepository;
 	
-	@GetMapping(value = "/index") 
+	@GetMapping(value = "/") 
 	public String index () {
 		return "index.html";
 	}
+
 }

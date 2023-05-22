@@ -12,12 +12,13 @@
 	
 </header>
 <body>
-	<div><img src="/siw-logo.jpg" width="10%"  /></div>
+	<div><a href="/"><img src="/siw-logo.jpg" width="10%"  /></a></div>
 	<h1>Elenco delle ricette inserite</h1>
 	<div th:if="${ricette.isEmpty()}">Non ci sono ricette nel sistema</div>
 	<ul>
 		<li th:each="ricetta : ${ricette}">
-			<span th:text="${ricetta.title} + ' (' + ${ricetta.author.username} + ')'">Carbonara (Totti2001)</span>
+			<span th:text="${ricetta.title} +  ')'">Carbonara (Totti2001)</span>
+			<a th:href="@{'/ricetta' + '/' + ${ricetta.id}}">Visualizza</a>
 		</li>
 	</ul>
 	<a href="/formNewRicetta">Aggiungi una ricetta</a>

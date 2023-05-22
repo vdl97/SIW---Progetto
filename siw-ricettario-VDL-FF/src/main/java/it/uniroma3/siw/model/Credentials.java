@@ -22,8 +22,8 @@ public class Credentials {
 	private String username;
 	private String password;
 	private String role;
-	@OneToMany(mappedBy="author")
-	private List<Ricetta> ricette;
+//	@OneToMany(mappedBy="author")
+//	private List<Ricetta> ricette;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private User user;

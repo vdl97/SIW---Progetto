@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		 <title>Ricetta</title>
-	</head>
-	<body>
+
+<head>
+	<title>
+		Ricetta
+	</title>
+	<link rel="stylesheet" href="/stile.css?version=2" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<header>
+
+	</header>
+	<div><a href="/"><img src="/siw-logo.jpg" width="10%"  /></a></div>
 		 <h1>Dettagli Ricetta</h1>
     <div th:if="${ricetta}">
         <span th:text="${ricetta.title}">Carbonara</span>
-        <span th:text="'(' + ${ricetta.preparationTime} + ')'">(20minuti)</span>
+        <span th:text="'(' + ${ricetta.descriptionRicetta} + ')'">apri justeat</span>
     </div>
     <div th:unless="${ricetta}">Non esiste</div>
 	</body>

@@ -31,13 +31,13 @@ public class Ricetta {
 	
 	@Column(nullable=false)
 	private String title;
-	@Column(nullable=false)
-	private int preparationTime;
-	private Integer dosesPerPerson;
 	@Column(columnDefinition="TEXT",nullable=false)
 	private String descriptionRicetta;
-	@ManyToOne
-	private Credentials author;
+//	@Column(nullable=false)
+//	private int preparationTime;
+//	private Integer dosesPerPerson;
+//	@ManyToOne
+//	private Credentials author;
 //	
 //	@ManyToMany
 //	@ElementCollection
@@ -61,18 +61,7 @@ public class Ricetta {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public int getpreparationTime() {
-		return preparationTime;
-	}
-	public void setpreparationTime(int preparationTime) {
-		this.preparationTime = preparationTime;
-	}
-	public int getDosesPerPerson() {
-		return dosesPerPerson;
-	}
-	public void setDosesPerPerson(int dosesPerPerson) {
-		this.dosesPerPerson = dosesPerPerson;
-	}
+	
 	public String getDescriptionRicetta() {
 		return descriptionRicetta;
 	}
@@ -82,15 +71,9 @@ public class Ricetta {
 
 	
 
-//	public Map<Ingrediente, String> getListaIngredienti() {
-//		return listaIngredienti;
-//	}
-//	public void setListaIngredienti(Map<Ingrediente, String> listaIngredienti) {
-//		this.listaIngredienti = listaIngredienti;
-//	}
-	@Override
+@Override
 	public int hashCode() {
-		return Objects.hash( descriptionRicetta, dosesPerPerson, preparationTime, title);
+		return Objects.hash(descriptionRicetta, id, portata, title);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -101,9 +84,8 @@ public class Ricetta {
 		if (getClass() != obj.getClass())
 			return false;
 		Ricetta other = (Ricetta) obj;
-		return Objects.equals(descriptionRicetta, other.descriptionRicetta)
-				&& Objects.equals(dosesPerPerson, other.dosesPerPerson) && preparationTime == other.preparationTime
-				&& Objects.equals(title, other.title);
+		return Objects.equals(descriptionRicetta, other.descriptionRicetta) && Objects.equals(id, other.id)
+				&& Objects.equals(portata, other.portata) && Objects.equals(title, other.title);
 	}
 	public String getPortata() {
 		return portata;
@@ -111,10 +93,5 @@ public class Ricetta {
 	public void setPortata(String portata) {
 		this.portata = portata;
 	}
-	public Credentials getAuthor() {
-		return author;
-	}
-	public void setAuthor(Credentials author) {
-		this.author = author;
-	}
+
 }
