@@ -13,6 +13,7 @@ import java.util.Set;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MapKeyJoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Column;
@@ -38,7 +39,13 @@ public class Ricetta {
 //	private Integer dosesPerPerson;
 //	@ManyToOne
 //	private Credentials author;
-//	
+
+//IMPLEMENTO RELAZIONE TRA INGREDIENTE E RICETTA USANDO UNA TABELLA INTERMEDIA PORZIONAMENTO (INGR_ID,RIC_ID,QTY)
+	@OneToMany(mappedBy = "ricetta")
+    private List<IngredienteRicettaPorzione> ingrRicPorz;	
+	
+	
+//PER ORA PROVO AGGIUNGENDO UNA TABELLA INTERMEDIA PORZIONI	
 //	@ManyToMany
 //	@ElementCollection
 //    @CollectionTable(name = "ricetta_ingrediente",

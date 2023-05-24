@@ -1,5 +1,6 @@
 package it.uniroma3.siw.model;
 
+import java.util.List;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -7,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Ingrediente {
@@ -18,6 +20,10 @@ public class Ingrediente {
 	private String name;
 	private String category;
 	private Integer calories;
+	
+	//IMPLEMENTO RELAZIONE TRA INGREDIENTE E RICETTA USANDO UNA TABELLA INTERMEDIA PORZIONAMENTO (INGR_ID,RIC_ID,QTY)
+	 @OneToMany(mappedBy = "ingrediente")
+	    private List<IngredienteRicettaPorzione> ingrRicPorz;
 	
 	public String getName() {
 		return name;
