@@ -100,5 +100,11 @@ public class Ricetta {
 	public void setPortata(String portata) {
 		this.portata = portata;
 	}
+	public List<IngredienteRicettaPorzione> getIngrRicPorz() {
+		return ingrRicPorz;
+	}
+	public void setIngrRicPorz(List<IngredienteRicettaPorzione> ingrRicPorz) {
+		this.ingrRicPorz = ingrRicPorz;
+	}
 
 }

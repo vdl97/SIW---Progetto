@@ -13,27 +13,37 @@
 	<header>
 
 	</header>
-		<div><a href="/"><img src="/siw-logo.jpg" width="10%"  /></a></div>
+	<div><a href="/"><img src="/siw-logo.jpg" width="10%" /></a></div>
 
 	<h1>Aggiungi la tua ricetta</h1>
 	<form th:action="@{/ricetta}" method="POST" th:object="${ricetta}">
 		<div th:if="${#fields.hasGlobalErrors()}">
-  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p> 
-  		</div>
-		<div>
-			<label>Titolo:</label> 
-			<span><input type="text" th:field="${ricetta.title}" /></span>
-		    <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
-		    </span>
+			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 		</div>
 		<div>
-			<label>Descrizione:</label> 
+			<label>Titolo:</label>
+			<span><input type="text" th:field="${ricetta.title}" /></span>
+			<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
+			</span>
+		</div>
+		<div>
+			<label>Descrizione:</label>
 			<span><input type="text" th:field="${ricetta.descriptionRicetta}" /></span>
-		    <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
-		    </span>
+			<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
+			</span>
 		</div>
 		<!-->POSSO INSERIRE GLI INGREDIENTI COME UNA LISTA DEI VARI INGREDIENTI + PORZ E CLICCARE ADD, POPOLA LA LISTA E 
 		DA LA POSSIBILITà DI INSERIRNE UN ALTRO<-->
+		<!-->GESTIONE LISTA D'INSERIMENTO:SUBMIT ACCANTO A LISTA E GENERO DI NUOVO NEWRICETTAFORM? O RENDO DINAMICA? O FACCIO COME ADD ATTORI<-->
+		<div>
+			<label>Ingredienti:</label>
+			<!-- DOPO SELECT USO TH:FIELD E PASSO LA LISTA, MA COME?? PER ORA NON LINKA MA MOSTRA SOLO ><-->
+			<select class="form-control" id="dropDownList" >
+				<option value="0">Scegli un ingrediente</option>
+				<option th:each="ingrediente : ${ingredienti}" th:value="${ingrediente.name}"
+					th:text="${ingrediente.name}"></option>
+			</select>
+		</div>
 		<div>
 			<span><button type="submit">Conferma</button></span>
 		</div>
