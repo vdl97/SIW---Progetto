@@ -5,5 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import it.uniroma3.siw.model.Ingrediente;
 
 public interface IngredienteRepository extends CrudRepository<Ingrediente,Long>{
-
+	
+	public boolean existsByNameAndCategory(String name,String catgory);
 }

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		Ingrediente
+	</title>
+	<link rel="stylesheet" href="/stile.css?version=2" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<header>
+
+	</header>
+	<div><a href="/"><img src="/siw-logo.jpg" width="10%"  /></a></div>
+		 <h1>Dettagli Ingrediente</h1>
+    <div th:if="${ingrediente}">
+        <span th:text="${ingrediente.name}">Zucchina</span>
+        <span th:text="'(' + ${ingrediente.category} + ')'">(Contorno)</span>
+    </div>
+    <div th:unless="${ingrediente}">Non esiste</div>
+	</body>
+</html>

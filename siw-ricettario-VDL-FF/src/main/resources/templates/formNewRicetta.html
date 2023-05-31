@@ -16,7 +16,7 @@
 	<div><a href="/"><img src="/siw-logo.jpg" width="10%" /></a></div>
 
 	<h1>Aggiungi la tua ricetta</h1>
-	<form th:action="@{/ricetta}" method="POST" th:object="${ricetta}">
+	<form th:action="@{/ricetta}" method="POST" th:object="${ricetta}" enctype="multipart/form-data">
 		<div th:if="${#fields.hasGlobalErrors()}">
 			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 		</div>
@@ -32,6 +32,9 @@
 			<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
 			</span>
 		</div>
+		<div>
+             	<span>Immagine<input type="file" name="file" multiple></input></span>
+       	</div>
 		<!-->POSSO INSERIRE GLI INGREDIENTI COME UNA LISTA DEI VARI INGREDIENTI + PORZ E CLICCARE ADD, POPOLA LA LISTA E 
 		DA LA POSSIBILITà DI INSERIRNE UN ALTRO<-->
 		<!-->GESTIONE LISTA D'INSERIMENTO:SUBMIT ACCANTO A LISTA E GENERO DI NUOVO NEWRICETTAFORM? O RENDO DINAMICA? O FACCIO COME ADD ATTORI<-->

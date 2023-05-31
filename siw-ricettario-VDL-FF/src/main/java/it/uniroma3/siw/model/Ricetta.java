@@ -42,7 +42,10 @@ public class Ricetta {
 
 //IMPLEMENTO RELAZIONE TRA INGREDIENTE E RICETTA USANDO UNA TABELLA INTERMEDIA PORZIONAMENTO (INGR_ID,RIC_ID,QTY)
 	@OneToMany(mappedBy = "ricetta")
-    private List<IngredienteRicettaPorzione> ingrRicPorz;	
+    private List<IngredienteRicettaPorzione> ingrRicPorz;
+	
+	@ManyToMany
+	private Set<Picture> pictures;
 	
 	
 //PER ORA PROVO AGGIUNGENDO UNA TABELLA INTERMEDIA PORZIONI	
@@ -75,9 +78,13 @@ public class Ricetta {
 	public void setDescriptionRicetta(String descriptionRicetta) {
 		this.descriptionRicetta = descriptionRicetta;
 	}
-
 	
-
+	public Set<Picture> getPictures() {
+		return pictures;
+	}
+	public void setPictures(Set<Picture> pictures) {
+		this.pictures = pictures;
+	}
 @Override
 	public int hashCode() {
 		return Objects.hash(descriptionRicetta, id, portata, title);
