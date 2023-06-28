@@ -1,94 +1,89 @@
 package it.uniroma3.siw.model;
 
-
-
-
-
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MapKeyJoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.CollectionTable;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapKeyJoinColumn;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
+import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Ricetta {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
-	
-	@Column(nullable=false)
-	private String title;
-	@Column(columnDefinition="TEXT",nullable=false)
-	private String descriptionRicetta;
-//	@Column(nullable=false)
-//	private int preparationTime;
-//	private Integer dosesPerPerson;
-//	@ManyToOne
-//	private Credentials author;
 
-//IMPLEMENTO RELAZIONE TRA INGREDIENTE E RICETTA USANDO UNA TABELLA INTERMEDIA PORZIONAMENTO (INGR_ID,RIC_ID,QTY)
-	@OneToMany(mappedBy = "ricetta")
-    private List<IngredienteRicettaPorzione> ingrRicPorz;
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+
+	@NotBlank
+	private String title;
+
+	@NotBlank
+	private String descriptionRicetta;
+
+	@OneToMany(fetch = FetchType.EAGER, cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE })
+	@JoinColumn(name = "orders_id")
+	private List<RicettaLine> ricettaLines;
+
+	@ManyToOne
+	private Credentials author;
+
 	@ManyToMany
 	private Set<Picture> pictures;
-	
-	
-//PER ORA PROVO AGGIUNGENDO UNA TABELLA INTERMEDIA PORZIONI	
-//	@ManyToMany
-//	@ElementCollection
-//    @CollectionTable(name = "ricetta_ingrediente",
-//        joinColumns = @JoinColumn(name = "ricetta_id"))
-//    @MapKeyJoinColumn(name = "ingrediente_id")
-//    @Column(name = "nome_ingrediente")
-//	private Map<Ingrediente,String> listaIngredienti;
-	
-	private String portata;
-	
+
+//	private String portata;
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
+
 	public String getDescriptionRicetta() {
 		return descriptionRicetta;
 	}
+
 	public void setDescriptionRicetta(String descriptionRicetta) {
 		this.descriptionRicetta = descriptionRicetta;
 	}
-	
+
 	public Set<Picture> getPictures() {
 		return pictures;
 	}
+
 	public void setPictures(Set<Picture> pictures) {
 		this.pictures = pictures;
 	}
-@Override
+
+	@Override
 	public int hashCode() {
-		return Objects.hash(descriptionRicetta, id, portata, title);
+		return Objects.hash(descriptionRicetta, id, title);
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -99,19 +94,8 @@ public class Ricetta {
 			return false;
 		Ricetta other = (Ricetta) obj;
 		return Objects.equals(descriptionRicetta, other.descriptionRicetta) && Objects.equals(id, other.id)
-				&& Objects.equals(portata, other.portata) && Objects.equals(title, other.title);
+			 && Objects.equals(title, other.title);
 	}
-	public String getPortata() {
-		return portata;
-	}
-	public void setPortata(String portata) {
-		this.portata = portata;
-	}
-	public List<IngredienteRicettaPorzione> getIngrRicPorz() {
-		return ingrRicPorz;
-	}
-	public void setIngrRicPorz(List<IngredienteRicettaPorzione> ingrRicPorz) {
-		this.ingrRicPorz = ingrRicPorz;
-	}
+
 
 }

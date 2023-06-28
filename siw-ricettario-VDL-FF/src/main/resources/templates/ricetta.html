@@ -5,7 +5,7 @@
 	<title>
 		Ricetta
 	</title>
-	<link rel="stylesheet" href="/stile.css?version=2" />
+	<link rel="stylesheet" href="/css/stile.css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
@@ -18,7 +18,7 @@
     <div th:if="${ricetta}">
         <span th:text="${ricetta.title}">Carbonara</span>
         <span th:text="'(' + ${ricetta.descriptionRicetta} + ')'">apri justeat</span>
-        	<div th:each="img : ${movie.pictures}">
+        	<div th:each="img : ${ricetta.pictures}">
     		<!-- Immagine-->
     		<img th:src="'data:image;base64,'+${img.getImgData()}"></img>
 		</div>

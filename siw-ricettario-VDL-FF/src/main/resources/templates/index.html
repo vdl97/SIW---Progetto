@@ -5,12 +5,18 @@
 	<title>
 		SiwRicettario - Homepage
 	</title>
-	<link rel="stylesheet" href="/stile.css?version=2" />
+	<link rel="stylesheet" href="/css/stile.css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <header>
-	
-</header>
+		<div th:if="${#request.userPrincipal}">
+			<span th:text="${#request.userPrincipal.principal.username}"></span>
+			<a href="/logout">Logout</a>
+		</div>
+		<div th:unless="${#request.userPrincipal}">
+			<a href="/login">Login</a>
+		</div>
+	</header>
 <body>
 	<div><a href="/"><img src="/siw-logo.jpg" width="10%"  /></a></div>
 	<h1>Operazioni(TEST)</h1>

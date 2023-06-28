@@ -28,7 +28,9 @@ img {
   border-radius: 45%;
 }
 h1 {
-  color: green;
+	color:orangered;
+  text-shadow: 2px 2px 5px yellow;
+  
   font-size: xx-large;
 }
 

@@ -22,7 +22,7 @@ import it.uniroma3.siw.model.Picture;
 import it.uniroma3.siw.repository.IngredienteRepository;
 import it.uniroma3.siw.repository.PictureRepository;
 import it.uniroma3.siw.repository.RicettaRepository;
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 
 @Controller
 public class RicettaController {

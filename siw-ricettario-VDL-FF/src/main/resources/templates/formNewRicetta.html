@@ -5,7 +5,7 @@
 	<title>
 		New Ricetta
 	</title>
-	<link rel="stylesheet" href="/stile.css?version=2" />
+	<link rel="stylesheet" href="/css/stile.css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
@@ -33,20 +33,9 @@
 			</span>
 		</div>
 		<div>
-             	<span>Immagine<input type="file" name="file" multiple></input></span>
-       	</div>
-		<!-->POSSO INSERIRE GLI INGREDIENTI COME UNA LISTA DEI VARI INGREDIENTI + PORZ E CLICCARE ADD, POPOLA LA LISTA E 
-		DA LA POSSIBILITà DI INSERIRNE UN ALTRO<-->
-		<!-->GESTIONE LISTA D'INSERIMENTO:SUBMIT ACCANTO A LISTA E GENERO DI NUOVO NEWRICETTAFORM? O RENDO DINAMICA? O FACCIO COME ADD ATTORI<-->
-		<div>
-			<label>Ingredienti:</label>
-			<!-- DOPO SELECT USO TH:FIELD E PASSO LA LISTA, MA COME?? PER ORA NON LINKA MA MOSTRA SOLO ><-->
-			<select class="form-control" id="dropDownList" >
-				<option value="0">Scegli un ingrediente</option>
-				<option th:each="ingrediente : ${ingredienti}" th:value="${ingrediente.name}"
-					th:text="${ingrediente.name}"></option>
-			</select>
+			<span>Immagine<input type="file" name="file" multiple></input></span>
 		</div>
+		
 		<div>
 			<span><button type="submit">Conferma</button></span>
 		</div>
