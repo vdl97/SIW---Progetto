@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Delete Film</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+
+
+	<div th:replace="fragments/base.html :: indexImg"></div>
+	<h1>Vuoi davvero cancellare questa ricetta?</h1>
+	<a th:href="@{'/default/confirmDeletionRicetta' + '/' + ${ricetta.id}}">Conferma</a>
+
+	<a href="/admin/manageRicette">Torna a gestione ricette</a>
+	<div class="undertitle" th:text="${ricetta.title}">Carbonara</div>
+	<div>INGREDIENTI:</div>
+	<div class="span-list" th:each="rl : ${ricetta.ricettaLines}">-
+		<span th:text="${rl.ingrediente.name}">test</span>
+	</div>
+	<strong th:text="'Autore: ' + ${ricetta.author.username} ">apri justeat</strong>
+	<div class="container">
+		<div th:each="img : ${ricetta.pictures}">
+			<span th:if="${img.getImgData()}!=''">
+
+				<!-- Immagine-->
+				<img th:src="'data:image;base64,'+${img.getImgData()}"></img>
+			</span>
+
+		</div>
+	</div>
+
+</body>
+
+</html>

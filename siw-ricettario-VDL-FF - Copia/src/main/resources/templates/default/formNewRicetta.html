@@ -10,11 +10,10 @@
 </head>
 
 <body>
-	<header>
+	<header th:replace="fragments/base.html :: intestazione"></header>
 
-	</header>
-	<div><a href="/"><img src="/siw-logo.jpg" width="10%" /></a></div>
 
+	<div th:replace="fragments/base.html :: indexImg"></div>
 	<h1>Aggiungi la tua ricetta</h1>
 	<form th:action="@{/ricetta}" method="POST" th:object="${ricetta}" enctype="multipart/form-data">
 		<div th:if="${#fields.hasGlobalErrors()}">
@@ -26,18 +25,20 @@
 			<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
 			</span>
 		</div>
+		<label>Portata:</label>
+		<span>
+			<select th:field="${ricetta.portata}">
+				<option value="0">Scegli</option>
+				<option th:each="portata : ${portate}" th:value="${portata}" th:text="${portata}"></option>
+			</select>
+		</span>
+
 		<div>
-			<label>Descrizione:</label>
-			<span><input type="text" th:field="${ricetta.descriptionRicetta}" /></span>
-			<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">
-			</span>
+			<span>Immagine <input type="file" name="file" multiple></input></span>
 		</div>
+		<!--AGGIUNGO CAMPI EXTRA DI CHIACCHIERE-->
 		<div>
-			<span>Immagine<input type="file" name="file" multiple></input></span>
-		</div>
-		
-		<div>
-			<span><button type="submit">Conferma</button></span>
+			<span><button type="submit">Procedi agli ingredienti</button></span>
 		</div>
 	</form>
 </body>
