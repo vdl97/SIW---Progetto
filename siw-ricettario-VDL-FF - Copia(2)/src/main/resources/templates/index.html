@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		SiwRicettario - Homepage
+	</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+
+
+	<div th:replace="fragments/base.html :: indexImg"></div>
+	<h1>Benvenuto nel portale per ricette da bartender!</h1>
+	<a href="/ricette">Controlla qualche ricetta</a>
+
+	<div><a href="/ingredienti">Gestisci ingredienti</a></div>
+	<div>
+		<a href="/formSearchRicetta">Cerca una ricetta per un certo ingrediente
+		</a>
+	</div>
+	<div>
+		<a href="/formSearchIngrediente">Cerca un ingrediente per gradazione alcolica</a>
+	</div>
+</body>
+
+</html>
