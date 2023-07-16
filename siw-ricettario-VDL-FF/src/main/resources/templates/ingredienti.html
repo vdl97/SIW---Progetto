@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		Ingredienti
+	</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+
+
+	<div th:replace="fragments/base.html :: indexImg"></div>
+	<h1>Elenco degli ingredienti inseriti</h1>
+	<div th:if="${ingredienti.isEmpty()}">Non ci sono ingredienti nel sistema</div>
+	<ul>
+		<li th:each="ingrediente : ${ingredienti}">
+			<span th:text="${ingrediente.name} + ' (' + ${ingrediente.category} + ')' ">Aperol (Bitter) </span>
+			<a th:href="@{'/ingrediente' + '/' + ${ingrediente.id}}">Visualizza</a>
+		</li>
+	</ul>
+	<span th:if="${#request.userPrincipal}">
+
+		<a href="/admin/formNewIngrediente">Aggiungi un ingrediente</a>
+	</span>
+</body>
+
+</html>

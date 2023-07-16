@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		Add Ingredienti
+	</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+
+
+	<div th:replace="fragments/base.html :: indexImg"></div>
+	<h1>Aggiungi ingredienti per la nuova ricetta </h1>
+	<h2 >puoi aggiungerli nella descrizione e notificare l'amministratore nel caso non siano presenti!</h2>
+	<ul>
+		<li th:each="ingrediente : ${ingredientiInRicetta}">
+			<span th:text="${ingrediente.name}+' '+${ingrediente.calories}"></span>
+			<a th:href="@{'/removeIngredienteFromRicetta/'+ ${ingrediente.id}+'/'+${ricetta.id}}">Cancella</a>
+		</li>
+	</ul>
+	<div>
+		Ingredienti che si possono aggiungere:
+		<ul>
+			<li th:each="ingrediente : ${ingredientiToAdd}">
+				<span th:text="${ingrediente.name}+' '+${ingrediente.calories}"></span>
+				<a th:href="@{'/addIngredienteToRicetta/'+ ${ingrediente.id}+'/'+${ricetta.id}}">Aggiungi</a>
+			</li>
+		</ul>
+		<div>
+			<div>
+				<a th:href="@{'/default/updateDescRicetta/'+ ${ricetta.id}}"><button type="button">Fine</button></a>
+			</div>
+</body>
+
+</html>

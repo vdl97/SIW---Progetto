@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		Ricette
+	</title>
+	<link rel="stylesheet" href="/css/stile.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+
+
+	<div th:replace="fragments/base.html :: indexImg"></div>
+	<h1>Elenco delle ricette inserite</h1>
+	<div th:if="${ricette.isEmpty()}">Non ci sono ricette nel sistema</div>
+	<ul>
+		<span th:each="ricetta : ${ricette}">
+			<!-- IMPLEMENTARE QUERY CHE PESCA SOLO VALIDATE PER GENERICO, VALIDATE E PROPRIE PER USER, E TUTTE ADMIN-->
+			<span th:if="${ricetta.isValidated}==TRUE">
+					<li th:text="${ricetta.title} + ' (' + ${ricetta.author.username} + ')'">Bello spreco! (rossi)</li>
+					<a th:href="@{'/ricetta' + '/' + ${ricetta.id}}">Visualizza</a>
+					<span th:if="${#request.userPrincipal}">
+						<a th:if="${ricetta.author.username}==${#request.userPrincipal.principal.username}"
+							th:href="@{'/default/UpdateRicetta' + '/' + ${ricetta.id}}">Aggiorna</a>
+					</span>
+			</span>
+			<span th:if="${ricetta.author.username}==${#request.userPrincipal.principal.username}">
+				
+				<li th:text="${ricetta.title} + ' (' + ${ricetta.author.username} + ')'">Bello spreco! (rossi)</li>
+					<a th:href="@{'/ricetta' + '/' + ${ricetta.id}}">Visualizza</a>
+					<span th:if="${#request.userPrincipal}">
+						<a th:if="${ricetta.author.username}==${#request.userPrincipal.principal.username}"
+							th:href="@{'/default/UpdateRicetta' + '/' + ${ricetta.id}}">Aggiorna</a>
+					</span>
+			</span>
+		</span>
+	</ul>
+	<span th:if="${#request.userPrincipal}">
+
+		<a href="/default/formNewRicetta">Aggiungi una ricetta</a>
+	</span>
+</body>
+
+</html>
